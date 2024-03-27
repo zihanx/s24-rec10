@@ -14,6 +14,11 @@
   text-align: center;
 }
 
+.cell.playable:hover {
+  background-color: lightgreen; /* Change color on hover */
+  cursor: pointer; /* Change cursor to indicate clickable */
+}
+
 #bottombar {
   height: 5vh;
 }

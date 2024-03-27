@@ -68,4 +68,22 @@ public class Game {
             return board.getCell(1, 1);
         return null;
     }
+
+    // Add a status message getter
+    public String getStatusMessage() {
+        Player winner = getWinner();
+        if (winner != null) {
+            return "Player " + (winner == Player.PLAYER0? "X" : "O") + " wins!";
+        } else {
+            return "Player " + (player == Player.PLAYER0? "X" : "O") + "'s turn";
+        }
+    }
+
+    // Add an unda function
+    public Game undo() {
+        if (!history.isEmpty()) {
+            return history.get(history.size() - 1);
+        }
+        return this;
+    }
 }

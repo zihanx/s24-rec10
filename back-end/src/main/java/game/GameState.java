@@ -6,13 +6,18 @@ public class GameState {
 
     private final Cell[] cells;
 
-    private GameState(Cell[] cells) {
+    // Add a status string
+    private final String statusMessage;
+
+    private GameState(Cell[] cells, String statusMessage) {
         this.cells = cells;
+        this.statusMessage = statusMessage;
     }
 
     public static GameState forGame(Game game) {
         Cell[] cells = getCells(game);
-        return new GameState(cells);
+        String statusMessage = game.getStatusMessage();
+        return new GameState(cells, statusMessage);
     }
 
     public Cell[] getCells() {
@@ -26,8 +31,8 @@ public class GameState {
     @Override
     public String toString() {
         return """
-                { "cells": %s}
-                """.formatted(Arrays.toString(this.cells));
+                { "cells": %s, "status": "%s"}
+                """.formatted(Arrays.toString(this.cells), this.statusMessage);
     }
 
     private static Cell[] getCells(Game game) {
